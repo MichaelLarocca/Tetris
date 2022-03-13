@@ -1,0 +1,315 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #333;
+    color: whitesmoke;
+    font-family: 'Redressed', cursive;
+    background-image: url("https://s3.amazonaws.com/tetris-www/assets/article/2017/05/12/st-basils-cathedral-tetris-music_feature.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    text-shadow: 1px 1px 1px rgb(223,0,31);
+    height: 100vh;
+  }
+  
+  /*  Mobile first*/
+  #ctn-game {
+    border: 3px solid green;
+    border: none;
+    width: 400px;
+    margin: 0 auto;
+  }
+  
+  #title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 5px solid whitesmoke;
+    background-color: rgba(0,0,0,1);
+    padding: 15px;
+    font-size: 33px;
+    width: 70px;
+    height: 50px;
+  }
+  
+  #title div {
+    border: none;
+  }
+  
+  /*  Desktop 2nd*/
+  @media only screen and (min-width: 550px) {
+      #title {
+        display: block;
+        display: flex;
+      }  
+      #ctn-game {
+  /*       border: 3px solid green; */
+        width: 400px;
+        margin: 0 auto;
+    }
+  }
+  
+  .text-flip {
+    transform:rotateY(180deg);
+    border: none;
+    color: rgb(223,0,31);
+  }
+  
+  #middle {
+  /*  border: 3px solid yellow;  */
+   border: none;
+   display: flex;
+  }
+  
+  #ctn-left {
+  /*   border: 3px solid blue; */
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: left;
+    width: 130px;
+  }
+  
+  .score,
+  .level {
+    border: 5px solid whitesmoke;
+    background-color: rgba(0,0,0,1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    text-align: center;
+  }
+  
+  #display {
+    border: 5px solid whitesmoke;
+    background-color: rgba(0,0,0,1);  
+    text-align: center;
+    padding: 5px;
+    width: 90px;
+    height: 20px;
+  }
+  
+  .blink {
+    animation: blink 1s steps(1, end) infinite;
+  }
+  
+  @keyframes blink {
+    0% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
+  .score div,
+  .level div,
+  .display {
+    border: none; 
+    text-align: center;
+  }
+  
+  .txt-small {
+    font-size: 12px;
+  }
+  
+  span {
+    margin-left: 2px;
+  }
+  
+  .btn {
+    border: none;
+  }
+  
+  #ctn-right {
+  /*   border: 3px solid orange; */
+  }
+  
+  .block {
+    min-height: 25px;
+    min-width: 25px;
+    max-height: 25px;
+    max-width: 25px;
+    box-sizing: border-box;
+  } 
+  
+  .block-cleared {
+    border-top: 5px solid whitesmoke;
+    border-right: 5px solid whitesmoke;
+    border-bottom: 5px solid whitesmoke;
+    border-left: 5px solid whitesmoke;
+    background-color: rgba(0,0,0,.8);
+  } 
+  
+  .taken {
+    min-width: 25px;
+    max-width: 25px;
+    box-sizing: border-box; 
+  /*   display: none; */
+  }
+  
+  .tetromino {
+  /*   background-color: blue; */
+  }
+  
+  .green {
+    border-top: 5px solid #BADE73;
+    border-right: 5px solid #85B02B;
+    border-bottom: 5px solid #85B02B;
+    border-left: 5px solid #BADE74;
+    background-color: #99CC33;
+  }
+  
+  .blue {
+    border-top: 5px solid #53AEDB;
+    border-right: 5px solid #206F96;
+    border-bottom: 5px solid #206F96;
+    border-left: 5px solid #53AEDB;
+    background-color: #2888B8;
+  }
+  
+  .orange {
+    border-top: 5px solid #FFB56C;
+    border-right: 5px solid #DB852E;
+    border-bottom: 5px solid #DB852E;
+    border-left: 5px solid #FFB56C;
+    background-color: #FF9934;
+  }
+  
+  .yellow {
+    border-top: 5px solid #FEDF62;
+    border-right: 5px solid #DBB009;
+    border-bottom: 5px solid #E2BF34;
+    border-left: 5px solid #FEE57C;
+    background-color: #FED62C;
+  }
+  
+  .purple {
+    border-top: 5px solid #B47DB4;
+    border-right: 5px solid #6F4B6F;
+    border-bottom: 5px solid #6F4B6F;
+    border-left: 5px solid #B37CB3;
+    background-color: #986699;
+  }
+  
+  .red {
+    border-top: 5px solid #FC5E6F;
+    border-right: 5px solid #BF182C;
+    border-bottom: 5px solid #BF182C;
+    border-left: 5px solid #FB7A87;
+    background-color: #E61C34;
+  }
+  
+  .teal {
+    border-top: 5px solid #81E0C0;
+    border-right: 5px solid #26946F;
+    border-bottom: 5px solid #26946F;
+    border-left: 5px solid #81E0C0;
+    background-color: #33CB98;
+  }
+  
+  .tetromino {
+  /*   background-color: blue; */
+  }
+  
+  div {
+    border: 1px solid gray;
+  }
+  
+  #mini-grid {
+    border: 5px solid whitesmoke;
+    width: 103px;
+    height: 103px;
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 1px;
+    background-color: rgba(0,0,0,.5);
+  }
+  
+  #grid {
+    border: 5px solid whitesmoke;
+    background-color: rgba(0,0,0,.5);
+    width: 270px;
+    height: 575px;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: 1px;
+  }
+  
+  #controler {
+    background-color: black;
+    border: 5px solid whitesmoke;
+  /*   border: none; */
+    border-radius: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  #logo {
+    width: 80px;
+    width: 125px;
+    height: 100px;
+    border: none;
+  /*   background-image: url("https://lh3.googleusercontent.com/31OD2xwUnyrZRBzhsEwfXjUo1rDA8ROX0PSOKxOxAXib3dkZmv0eGdSQbvLkhWTjp_QA9MsI961VnTrT32XsooBvc6_Njg0lPGglq5_zM9fyNbgf4BbXJHla9jFsoWEdf9L6rMbOwmoO6TJ2SzandnJPuiFT60BTTCCuDcRpm4HKl2uMSdKmcyabDG4cDca-cT0GMZO4lhvoK3BGUDPb_AIhEMmc_lusQosSa7W2IwYQHSr0XieJM6A4VcBbutefJLjRBWLpYES5drOS1_KA2nBdT-4DQNrk2GRJDp2lC9zbovKuv1K5awTVLotwbjMfEorG1lxleI3e8cSDwJU62ZBbw6iYPrhB5G8oCbSLp8KgIjGutR5RVRHekoPIA3GUeBBsDYR5LEckGujnpHmt1vlHkjIIL1NQFOSfrD9ffZd55H7ZRdM5YyDBL_Lo28-SHoIiMZPqFzRiZu5KQd60_vnFMwUclqUh3vfo9kYZYcWrztFlz16_HhaWAJiGxWuUjjkz1iSoyvW87LwPTMjMlh-vWmfqJeodvbPcaHJbrIGOS8ZbTxABBbHRwsYh0hg6IK1CD9NtQyF9wJU-jssCMCbRs8APf8912ji7XNygAIL6iDnk7fbvaJrRXqXDPBux1dQyorDNp9bm7YiNoFZrqLZkW3YgBQVytK-1f2v0AJoT0vSdicwIJLA5g9fDAJbSpC4qXTkE93eqKXVXFDpix6Q5=w1871-h674-no?authuser=0"); */
+    background-image: url("https://github.com/MichaelLarocca/La_Roc-Cade/blob/main/dist/img/LaRocCade-03.png?raw=true");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 120px;
+    background-size: 175px;
+  }
+  
+  #joystick {
+  /*   background-color: blue; */
+  /*   border: 3px solid blue; */
+    display: flex;
+    flex-wrap: wrap;
+  /*   width: 101px; */
+    width: 125px;
+    border: none;
+    text-shadow: 1px 1px 1px rgb(0,0,0);
+  }
+  
+  #joystick:focus,
+  #joystick:hover {
+    cursor: pointer;
+  }
+  
+  #joystick div {
+  /*   background-color: red; */
+    border: none;
+  /*   width: 20px; */
+    width: 25px;
+    height: 25px;
+    margin: 5px;
+    text-align: center;
+  }
+  
+  #ctr-up,
+  #ctr-down,
+  #ctr-left,
+  #ctr-right {
+    border: 2px solid whitesmoke !important;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  #btn-start {
+    border: 2px solid whitesmoke !important;
+    border-radius: 50px;
+    padding: 5px 12px;
+    text-shadow: 1px 1px 1px rgb(0,0,0);
+  }
+  
+  .border-none {
+    border: 1px solid black;
+  }
