@@ -1,5 +1,5 @@
 console.clear();
-//
+
 document.addEventListener('DOMContentLoaded', ()=> {
   // console.log(`DOMContentLoaded`);  
   const grid = document.getElementById("grid");
@@ -30,7 +30,15 @@ document.addEventListener('DOMContentLoaded', ()=> {
   ctnLinesTotal.innerHTML = linesTotal;
   // ctnLevel.innerHTML = level;
   ctnLinesLevel.innerHTML = linesLevel;
-  
+// Sounds
+const soundMove = new Audio("sound/Tetris-Move.mp3");
+const soundDrop = new Audio("sound/Tetris-Drop.mp3");
+const soundClearRow = new Audio("sound/Tetris-Clear-Row.mp3");
+const soundLevelUp = new Audio("sound/Tetris-Level-Up.mp3");
+const soundGameOver = new Audio("sound/Tetris-Game-Over.mp3");
+const soundMainMusic = new Audio("sound/Tetris-Main-Music.mp3");
+soundMainMusic.volume = 0.7;
+
   // Added code
   function levelSpeed() {
     if(level === 1) {
@@ -165,10 +173,13 @@ document.addEventListener('DOMContentLoaded', ()=> {
     if(flagGameOver != true) {
           if(e.keyCode === 37) {
             moveLeft();
+            soundMove.play();
           } else if (e.keyCode === 38) {
             rotate();
+            soundMove.play();
           } else if (e.keyCode === 39) {
             moveRight();
+            soundMove.play();
           } else if (e.keyCode === 40) {
             // moveDown
             speedIncrease = true;
@@ -231,6 +242,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
   function changeGameLevel(){
     if(linesLevel === 0) {
       level += 1;
+      soundLevelUp.play();
       linesLevel = 10;
       ctnLevel.innerHTML = level;
       ctnLinesLevel.innerHTML = linesLevel;
@@ -246,6 +258,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
   function freeze() {
     if(current.some(index => squares[currentPosition + index + width].classList.contains("taken"))) {
       current.forEach(index => squares[currentPosition + index].classList.add("taken"));
+      soundDrop.play();
       // Start a new tetromino
       color();
       random = nextRandom;
@@ -387,6 +400,9 @@ document.addEventListener('DOMContentLoaded', ()=> {
   
   function startGame() {
     if(flagGameOver != true) {
+       soundMainMusic.currentTime = 0;
+       soundMainMusic.play();
+       soundMainMusic.loop = true;
        display.classList.remove("blink");
         display.textContent = "";
         flagGameOver = false;
@@ -409,7 +425,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
         restartGame();
      }
   }
-  
+
   function restartGame() {
     console.log(`Game Restarted.`)
     
@@ -456,6 +472,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
             timerId = setInterval(moveDown, gameSpeed);
               // console.log(`gameSpeed: ${gameSpeed}`);
           score += currentLineScore; // (Working code);
+          soundClearRow.play();
             display.textContent = `Score +${currentLineScore}`;
             setTimeout(function(){
               display.textContent = ``;
@@ -507,8 +524,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
         ctnLinesLevel.innerHTML = linesLevel;
         scoreDisplay.innerHTML = score;    
     
-        counterRow = 0;    
-
+        counterRow = 0;
   } // End of addScore functions
 
   // Game Over
@@ -518,6 +534,8 @@ document.addEventListener('DOMContentLoaded', ()=> {
       // gameSpeed = 0;
       console.log(`GAME OVER!`);
       flagGameOver = true;
+      soundMainMusic.pause();
+      soundGameOver.play();
       clearInterval(timerId);
       // timerId = null;
         // display.classList.add("blink");
