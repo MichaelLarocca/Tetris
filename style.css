@@ -5,7 +5,7 @@ body {
     background-color: #333;
     color: whitesmoke;
     font-family: 'Redressed', cursive;
-    background-image: url("https://s3.amazonaws.com/tetris-www/assets/article/2017/05/12/st-basils-cathedral-tetris-music_feature.jpg");
+    background-image: url("img/st-basils-cathedral-tetris-music_feature.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -258,8 +258,7 @@ body {
     width: 125px;
     height: 100px;
     border: none;
-  /*   background-image: url("https://lh3.googleusercontent.com/31OD2xwUnyrZRBzhsEwfXjUo1rDA8ROX0PSOKxOxAXib3dkZmv0eGdSQbvLkhWTjp_QA9MsI961VnTrT32XsooBvc6_Njg0lPGglq5_zM9fyNbgf4BbXJHla9jFsoWEdf9L6rMbOwmoO6TJ2SzandnJPuiFT60BTTCCuDcRpm4HKl2uMSdKmcyabDG4cDca-cT0GMZO4lhvoK3BGUDPb_AIhEMmc_lusQosSa7W2IwYQHSr0XieJM6A4VcBbutefJLjRBWLpYES5drOS1_KA2nBdT-4DQNrk2GRJDp2lC9zbovKuv1K5awTVLotwbjMfEorG1lxleI3e8cSDwJU62ZBbw6iYPrhB5G8oCbSLp8KgIjGutR5RVRHekoPIA3GUeBBsDYR5LEckGujnpHmt1vlHkjIIL1NQFOSfrD9ffZd55H7ZRdM5YyDBL_Lo28-SHoIiMZPqFzRiZu5KQd60_vnFMwUclqUh3vfo9kYZYcWrztFlz16_HhaWAJiGxWuUjjkz1iSoyvW87LwPTMjMlh-vWmfqJeodvbPcaHJbrIGOS8ZbTxABBbHRwsYh0hg6IK1CD9NtQyF9wJU-jssCMCbRs8APf8912ji7XNygAIL6iDnk7fbvaJrRXqXDPBux1dQyorDNp9bm7YiNoFZrqLZkW3YgBQVytK-1f2v0AJoT0vSdicwIJLA5g9fDAJbSpC4qXTkE93eqKXVXFDpix6Q5=w1871-h674-no?authuser=0"); */
-    background-image: url("https://github.com/MichaelLarocca/La_Roc-Cade/blob/main/dist/img/LaRocCade-03.png?raw=true");
+    background-image: url("img/LaRocCade-03.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: 120px;
