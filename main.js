@@ -400,7 +400,7 @@ soundMainMusic.volume = 0.7;
   // })
   
   function startGame() {
-    flagGameStart == true;
+    flagGameStart = true;
     if(flagGameOver != true) {
        soundMainMusic.currentTime = 0;
        soundMainMusic.play();
