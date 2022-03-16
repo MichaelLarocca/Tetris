@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
   let currentLineScore;
   let counterRow = 0;
   let flagGameOver = false;
+  let flagGameStart = false;
   // let bonusPoints = level * counterRow;
   
   ctnLinesTotal.innerHTML = linesTotal;
@@ -170,7 +171,7 @@ soundMainMusic.volume = 0.7;
   
   // Assign functions to key codes
   function control(e) {
-    if(flagGameOver != true) {
+    if(flagGameOver != true && flagGameStart == true) {
           if(e.keyCode === 37) {
             moveLeft();
             soundMove.play();
@@ -399,6 +400,7 @@ soundMainMusic.volume = 0.7;
   // })
   
   function startGame() {
+    flagGameStart == true;
     if(flagGameOver != true) {
        soundMainMusic.currentTime = 0;
        soundMainMusic.play();
@@ -552,7 +554,7 @@ const ctrRight = document.getElementById("ctr-right");
 const btnStart = document.getElementById("btn-start");
 
 ctrUp.addEventListener("click", ()=>{
-  if(flagGameOver == false) {
+  if(flagGameOver == false && flagGameStart == true) {
       rotate();
       ctrUp.style.color = "black";
       ctrUp.style.backgroundColor = "white";
@@ -565,7 +567,7 @@ ctrUp.addEventListener("click", ()=>{
   console.log(`flagGameOver: ${flagGameOver}`)
 })
 ctrDown.addEventListener("click", ()=>{
-  if(flagGameOver == false) {
+  if(flagGameOver == false && flagGameStart == true) {
     speedIncrease = true;
     changeGameSpeed();
     ctrDown.style.color = "black";
@@ -579,7 +581,7 @@ ctrDown.addEventListener("click", ()=>{
   console.log(`flagGameOver: ${flagGameOver}`)
 })
 ctrLeft.addEventListener("click", ()=>{
-  if(flagGameOver == false) {
+  if(flagGameOver == false && flagGameStart == true) {
     moveLeft();
     ctrLeft.style.color = "black";
     ctrLeft.style.backgroundColor = "white";
@@ -592,7 +594,7 @@ ctrLeft.addEventListener("click", ()=>{
   console.log(`flagGameOver: ${flagGameOver}`)
 })
 ctrRight.addEventListener("click", ()=>{
-  if(flagGameOver == false) {
+  if(flagGameOver == false && flagGameStart == true) {
     moveRight();
     ctrRight.style.color = "black";
     ctrRight.style.backgroundColor = "white";
@@ -605,7 +607,7 @@ ctrRight.addEventListener("click", ()=>{
   console.log(`flagGameOver: ${flagGameOver}`)
 })
 btnStart.addEventListener("click", ()=>{
-  if(flagGameOver == false) {
+  if(flagGameOver == false && flagGameStart == true) {
     btnStart.style.color = "black";
     btnStart.style.backgroundColor = "white";
 
@@ -615,11 +617,6 @@ btnStart.addEventListener("click", ()=>{
     }, 500);    
   } else {return}
   console.log(`flagGameOver: ${flagGameOver}`)
-})
-
-function joystickButtonClick() {
-  
-}
-// END Joystick  
+})// END Joystick  
 
 })// DOMContentLoaded
