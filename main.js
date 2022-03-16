@@ -400,6 +400,7 @@ soundMainMusic.volume = 0.7;
   // })
   
   function startGame() {
+    startButton.removeEventListener("click", startGame);
     flagGameStart = true;
     if(flagGameOver != true) {
        soundMainMusic.currentTime = 0;
@@ -543,6 +544,7 @@ soundMainMusic.volume = 0.7;
         // display.classList.add("blink");
         // display.childNodes[0].classList.add("blink");
         display.textContent = "Game Over";
+        startButton.addEventListener("click", startGame);
     }
   }
   
