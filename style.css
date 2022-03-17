@@ -307,6 +307,7 @@ body {
     border-radius: 50px;
     padding: 5px 12px;
     text-shadow: 1px 1px 1px rgb(0,0,0);
+    cursor: pointer;
   }
   
   .border-none {

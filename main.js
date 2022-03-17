@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
   const scoreDisplay = document.getElementById("score");
   const display = document.getElementById("display");
   const startButton = document.getElementById("btn-start");
+  const iconBtnStart = document.getElementById("icon-btn-start");
   const ctnLinesTotal = document.getElementById("lines-total");
   const ctnLevel = document.getElementById("level");
   const ctnLinesLevel = document.getElementById("lines-level");
@@ -407,6 +408,7 @@ soundMainMusic.volume = 0.7;
        soundMainMusic.play();
        soundMainMusic.loop = true;
        display.classList.remove("blink");
+       iconBtnStart.classList.remove("blink");
         display.textContent = "";
         flagGameOver = false;
 
