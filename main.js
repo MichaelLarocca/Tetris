@@ -65,7 +65,7 @@ soundMainMusic.volume = 0.7;
     }
     if(level === 6) {
       gameSpeed = 250;
-      ccurrentLineScore = level * 10;
+      currentLineScore = level * 10;
     } 
     if(level === 7) {
       gameSpeed = 200;
