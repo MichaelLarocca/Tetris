@@ -547,6 +547,7 @@ soundMainMusic.volume = 0.7;
         // display.childNodes[0].classList.add("blink");
         display.textContent = "Game Over";
         startButton.addEventListener("click", startGame);
+        iconBtnStart.classList.add("blink");
     }
   }
   
