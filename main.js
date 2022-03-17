@@ -1,10 +1,8 @@
 console.clear();
 
 document.addEventListener('DOMContentLoaded', ()=> {
-  // console.log(`DOMContentLoaded`);  
   const grid = document.getElementById("grid");
   let squares = Array.from(document.querySelectorAll("#grid div"));
-    // console.log(squares);
   const scoreDisplay = document.getElementById("score");
   const display = document.getElementById("display");
   const startButton = document.getElementById("btn-start");
@@ -13,7 +11,6 @@ document.addEventListener('DOMContentLoaded', ()=> {
   const ctnLevel = document.getElementById("level");
   const ctnLinesLevel = document.getElementById("lines-level");
   const width = 10;
-  // let random;
   let nextRandom = 0;
   let timerId;
   let score = 0;
@@ -27,19 +24,18 @@ document.addEventListener('DOMContentLoaded', ()=> {
   let counterRow = 0;
   let flagGameOver = false;
   let flagGameStart = false;
-  // let bonusPoints = level * counterRow;
   
   ctnLinesTotal.innerHTML = linesTotal;
-  // ctnLevel.innerHTML = level;
   ctnLinesLevel.innerHTML = linesLevel;
-// Sounds
-const soundMove = new Audio("sound/Tetris-Move.mp3");
-const soundDrop = new Audio("sound/Tetris-Drop.mp3");
-const soundClearRow = new Audio("sound/Tetris-Clear-Row.mp3");
-const soundLevelUp = new Audio("sound/Tetris-Level-Up.mp3");
-const soundGameOver = new Audio("sound/Tetris-Game-Over.mp3");
-const soundMainMusic = new Audio("sound/Tetris-Main-Music.mp3");
-soundMainMusic.volume = 0.7;
+
+  // Sounds
+  const soundMove = new Audio("sound/Tetris-Move.mp3");
+  const soundDrop = new Audio("sound/Tetris-Drop.mp3");
+  const soundClearRow = new Audio("sound/Tetris-Clear-Row.mp3");
+  const soundLevelUp = new Audio("sound/Tetris-Level-Up.mp3");
+  const soundGameOver = new Audio("sound/Tetris-Game-Over.mp3");
+  const soundMainMusic = new Audio("sound/Tetris-Main-Music.mp3");
+  soundMainMusic.volume = 0.7;
 
   // Game Speed & Score
   function levelSpeed() {
@@ -135,14 +131,9 @@ soundMainMusic.volume = 0.7;
   // Tetrominoes
   let currentPosition = 4;
   let currentRotation = 0;
-
-  // Hold woking code
-  // let randomTetromino = Math.floor(Math.random() * theTetrominoes.length)
-  // let current = theTetrominoes[randomTetromino][currentRotation];
-  
   
   // Github Code
-    //randomly select a Tetromino and its first rotation
+  //randomly select a Tetromino and its first rotation
   let random = Math.floor(Math.random()*theTetrominoes.length)
   let current = theTetrominoes[random][currentRotation]
 
@@ -153,7 +144,6 @@ soundMainMusic.volume = 0.7;
       squares[currentPosition + index].classList.add('tetromino', randomColor);
     })
   }
-  // draw();
    function unDraw() {
     current.forEach(index => {
       squares[currentPosition + index].classList.remove('tetromino', randomColor);
@@ -175,11 +165,9 @@ soundMainMusic.volume = 0.7;
           } else if (e.keyCode === 40) {
             // moveDown
             speedIncrease = true;
-              // console.log(speedIncrease);
           } else if (e.keyCode === 32) { // SPACE BAR
             // SPACE BAR
             speedIncrease = false;
-              // console.log(speedIncrease);
           }
       }
   }
@@ -188,17 +176,11 @@ soundMainMusic.volume = 0.7;
   // Erase/Clear grid divs
   function clearGridDivs() {
     squares.forEach(index => {
-      // squares[index].classList.add("block-cleared");
-      
       squares.forEach((item, index)=>{
-        // squares[index].classList.add("block-cleared");
         if(!squares[index].classList.contains("taken")) {
         squares[index].classList.remove("green", "blue", "orange", "yellow", "purple", "red", "teal");  
         }        
       })
-      // if(!squares[i].classList.contains("taken")) {
-      // squares[i].classList.remove("green", "blue", "orange", "yellow", "purple", "red", "teal");  
-      // }
     })
   }
   
@@ -210,15 +192,12 @@ soundMainMusic.volume = 0.7;
         currentPosition += width;
         draw();
         freeze();
-          // console.log(`gameSpeed: ${gameSpeed}`);
-        // added code
         changeGameSpeed();
       }
   }
   
   // added code
   function changeGameSpeed() {
-     // added code
         if(speedIncrease === true) {
           gameSpeed = 100;
             clearInterval(timerId);
@@ -261,7 +240,6 @@ soundMainMusic.volume = 0.7;
             speedIncrease = false;
             clearInterval(timerId);
             timerId = setInterval(moveDown, gameSpeed);
-              // console.log(gameSpeed);
       if(flagGameOver != true) {
           draw();
           displayShape();
@@ -273,7 +251,7 @@ soundMainMusic.volume = 0.7;
   
   // Check for left wall
   function moveLeft() {
-      clearGridDivs(); // Added code
+    clearGridDivs(); // Added code
     unDraw();
     const isAtLeftEdge = current.some(index => (currentPosition + index) % width === 0);
     
@@ -285,7 +263,7 @@ soundMainMusic.volume = 0.7;
     draw();
   }
 
-    // Check for right wall
+  // Check for right wall
   function moveRight() {
       clearGridDivs(); // Added code
     unDraw();
@@ -327,8 +305,7 @@ soundMainMusic.volume = 0.7;
   
   // Rotate the Tetromino
   function rotate() {
-      // console.log(currentRotation);
-      clearGridDivs(); // Added code
+    clearGridDivs(); // Added code
     unDraw();
     currentRotation ++;
     if(currentRotation === current.length) {
@@ -341,7 +318,6 @@ soundMainMusic.volume = 0.7;
   
 // Show up-next tetromino in a mini display
   const displaySquares = document.querySelectorAll("#mini-grid div");
-    // console.log(displaySquares);
   const displayWidth = 4;
   let displayIndex = 0;
   
@@ -369,27 +345,7 @@ soundMainMusic.volume = 0.7;
   
   // Start button
   startButton.addEventListener("click", startGame);
-  // startButton.addEventListener("click", ()=> {
 
-//     display.classList.remove("blink");
-//     display.textContent = "";
-    
-//     if(timerId) {
-//       clearInterval(timerId);
-//       timerId = null;
-//     } else {
-//       draw();
-//       timerId = setInterval(moveDown, gameSpeed);
-//       nextRandom = Math.floor(Math.random()*theTetrominoes.length);
-//       displayShape();
-//     }
-    
-//     display.textContent = `Level ${level}`;
-//     setTimeout(function(){
-//       display.textContent = ``;
-//     }, 2500);  
-  // })
-  
   function startGame() {
     startButton.removeEventListener("click", startGame);
     flagGameStart = true;
@@ -430,6 +386,7 @@ soundMainMusic.volume = 0.7;
         item.classList.remove("taken", "tetromino", "block-cleared", "green", "blue", "orange", "yellow", "purple", "red", "teal");
         }
     })
+
     // Reset Variables
    nextRandom = 0;
    score = 0;
@@ -451,33 +408,25 @@ soundMainMusic.volume = 0.7;
     timerId = setInterval(moveDown, gameSpeed);
   }
   
-//Score
+  //Score
   function addScore() {
-  // let rowBonus = currentLineScore * counterRow; 
-    
+
       for(let i = 0; i < 199; i+= width) {
         const row = [i, i+1, i+2, i+3, i+4, i+5, i+6, i+7, i+8, i+9];
 
         if(row.every(index => squares[index].classList.contains("taken"))) {
-         
-            // gameSpeed -= 10;
             counterRow += 1;
-              // console.log(`counterRow: ${counterRow}`);
             clearInterval(timerId);
             timerId = setInterval(moveDown, gameSpeed);
-              // console.log(`gameSpeed: ${gameSpeed}`);
-          score += currentLineScore; // (Working code);
-          soundClearRow.play();
+            score += currentLineScore; // (Working code);
+            soundClearRow.play();
             display.textContent = `Score +${currentLineScore}`;
             setTimeout(function(){
               display.textContent = ``;
             }, 2500);  
-            // console.log(`score: ${score} currentLineScore${currentLineScore} + rowBonus${rowBonus}`);
+            
           linesTotal += 1;
           linesLevel -= 1;
-          // ctnLinesTotal.innerHTML = linesTotal;
-          // ctnLinesLevel.innerHTML = linesLevel;
-          // scoreDisplay.innerHTML = score;
           changeGameLevel();
           
           row.forEach(index => {
@@ -498,13 +447,9 @@ soundMainMusic.volume = 0.7;
         }
 
          if(counterRow > 1) {
-               // console.log(`Score: ${score}`);
             let bonusPoints = currentLineScore * counterRow;
             score += bonusPoints;
-               // console.log(`bonusPoints: ${bonusPoints}`);
-               // console.log(`Score + Bonus: New Score ${score}`)
-               // console.log(`bonusPoints: ${bonusPoints} currentLineScore: ${currentLineScore} * counterRow: ${counterRow}`);
-           display.textContent = `Bonus! +${bonusPoints}`;
+            display.textContent = `Bonus! +${bonusPoints}`;
 
            setTimeout(function(){
              display.textContent = `Score +${bonusPoints}`;
@@ -525,19 +470,14 @@ soundMainMusic.volume = 0.7;
   // Game Over
   function gameOver() {
     if(current.some(index => squares[currentPosition + index].classList.contains("taken"))) {
-      // scoreDisplay.innerHTML = 'End';
-      // gameSpeed = 0;
       console.log(`GAME OVER!`);
       flagGameOver = true;
       soundMainMusic.pause();
       soundGameOver.play();
       clearInterval(timerId);
-      // timerId = null;
-        // display.classList.add("blink");
-        // display.childNodes[0].classList.add("blink");
-        display.textContent = "Game Over";
-        startButton.addEventListener("click", startGame);
-        iconBtnStart.classList.add("blink");
+      display.textContent = "Game Over";
+      startButton.addEventListener("click", startGame);
+      iconBtnStart.classList.add("blink");
     }
   }
   
