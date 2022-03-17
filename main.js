@@ -41,57 +41,47 @@ const soundGameOver = new Audio("sound/Tetris-Game-Over.mp3");
 const soundMainMusic = new Audio("sound/Tetris-Main-Music.mp3");
 soundMainMusic.volume = 0.7;
 
-  // Added code
+  // Game Speed & Score
   function levelSpeed() {
     if(level === 1) {
       gameSpeed = 500;
-      currentLineScore = 10;
-        // console.log(`currentLineScore: ${currentLineScore}`);
+      currentLineScore = level * 10;
     }
     if(level === 2) {
       gameSpeed = 450;
-      currentLineScore = 20;
-        // console.log(`currentLineScore: ${currentLineScore}`);
+      currentLineScore = level * 10;
     }
     if(level === 3) {
       gameSpeed = 400;
-      currentLineScore = 30;
-        // console.log(`currentLineScore: ${currentLineScore}`);
+      currentLineScore = level * 10;
     }
     if(level === 4) {
       gameSpeed = 350;
-      currentLineScore = 40;
-        // console.log(`currentLineScore: ${currentLineScore}`);
+      currentLineScore = level * 10;
     }  
     if(level === 5) {
       gameSpeed = 300;
-      currentLineScore = 50;
-        // console.log(`currentLineScore: ${currentLineScore}`);
+      currentLineScore = level * 10;
     }
     if(level === 6) {
       gameSpeed = 250;
-      currentLineScore = 60;
-        // console.log(`currentLineScore: ${currentLineScore}`);
+      ccurrentLineScore = level * 10;
     } 
     if(level === 7) {
       gameSpeed = 200;
-      currentLineScore = 70;
-        // console.log(`currentLineScore: ${currentLineScore}`);
+      currentLineScore = level * 10;
     } 
     if(level === 8) {
       gameSpeed = 150;
-      currentLineScore = 80;
-        // console.log(`currentLineScore: ${currentLineScore}`);
+      currentLineScore = level * 10;
     } 
     if(level === 9) {
       gameSpeed = 100;
-      currentLineScore = 90;
-        // console.log(`currentLineScore: ${currentLineScore}`);
+      currentLineScore = level * 10;
     }     
     if(level >= 10) {
       gameSpeed = 100;
-      currentLineScore = 100;
-        // console.log(`currentLineScore: ${currentLineScore}`);
+      currentLineScore = level * 10;
     }
   }  
   
