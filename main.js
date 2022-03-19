@@ -88,12 +88,26 @@ document.addEventListener('DOMContentLoaded', ()=> {
     [1, width+1, width*2+1, width*2],
     [width, width*2, width*2+1, width*2+2]
   ]
-  
+
+  const lTetromino2 = [
+    [0,width,width*2,width*2+1],
+    [0,1,2,width],
+    [0,1,width+1,width*2+1],
+    [2,width,width+1,width+2]
+  ]
+
   const zTetromino = [
     [0, width, width+1, width*2+1],
     [width+1, width+2, width*2, width*2+1],
     [0, width, width+1, width*2+1],
     [width+1, width+2, width*2, width*2+1]
+  ]
+
+  const zTetromino2 = [
+    [1, width, width+1, width*2],
+    [width, width+1, width*2+1, width*2+2],
+    [1, width, width+1, width*2],
+    [width, width+1, width*2+1, width*2+2]
   ]
     
   const tTetromino = [
@@ -117,7 +131,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
     [width, width+1, width+2, width+3]
   ]
   
-  const theTetrominoes = [lTetromino, zTetromino, tTetromino, oTetromino, iTetromino];
+  const theTetrominoes = [lTetromino, lTetromino2, zTetromino, zTetromino2, tTetromino, oTetromino, iTetromino];
   let randomColor;
   
   // Randomly select a color for each Tetromino
@@ -321,15 +335,16 @@ document.addEventListener('DOMContentLoaded', ()=> {
   const displayWidth = 4;
   let displayIndex = 0;
   
-  
-// The Tetrominoes without rotation
+  // The Tetrominoes without rotation
   const upNextTetrominoes = [
-    [1, displayWidth+1, displayWidth*2+1, 2],
-    [0, displayWidth, displayWidth+1, displayWidth*2+1],
-    [1, displayWidth, displayWidth+1, displayWidth+2],
-    [0,1,displayWidth,displayWidth+1],
-    [1,displayWidth+1,displayWidth*2+1,displayWidth*3+1]
-  ]
+    [1, displayWidth+1, displayWidth*2+1, 2], //lTetromino
+    [0,displayWidth,displayWidth*2,displayWidth*2+1], //lTetromino2
+    [0, displayWidth, displayWidth+1, displayWidth*2+1], //zTetromino
+    [1, displayWidth, displayWidth+1, displayWidth*2], //zTetromino2
+    [1, displayWidth, displayWidth+1, displayWidth+2], //tTetromino
+    [0,1,displayWidth,displayWidth+1], //oTetromino
+    [1,displayWidth+1,displayWidth*2+1,displayWidth*3+1] //iTetromino
+  ]    
   
 // Display mini-grid shape
   function displayShape() {
@@ -338,7 +353,6 @@ document.addEventListener('DOMContentLoaded', ()=> {
     })
     upNextTetrominoes[nextRandom].forEach(index => {
       displaySquares[displayIndex + index].classList.add("tetromino", "block-cleared");
-        console.log(nextRandom);
       // Colors
     });
   }
@@ -378,8 +392,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
   }
 
   function restartGame() {
-    console.log(`Game Restarted.`)
-    
+
     // Clear Game Grid
     squares.forEach((item, index) => {
       if(index < 200) {
@@ -406,6 +419,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
     //Restart Game
     startGame();
     timerId = setInterval(moveDown, gameSpeed);
+    displayShape();
   }
   
   //Score
@@ -470,7 +484,6 @@ document.addEventListener('DOMContentLoaded', ()=> {
   // Game Over
   function gameOver() {
     if(current.some(index => squares[currentPosition + index].classList.contains("taken"))) {
-      console.log(`GAME OVER!`);
       flagGameOver = true;
       soundMainMusic.pause();
       soundGameOver.play();
@@ -499,7 +512,6 @@ ctrUp.addEventListener("click", ()=>{
         ctrUp.style.backgroundColor = "black";
       }, 500);
     } else {return}
-  console.log(`flagGameOver: ${flagGameOver}`)
 })
 ctrDown.addEventListener("click", ()=>{
   if(flagGameOver == false && flagGameStart == true) {
@@ -513,7 +525,6 @@ ctrDown.addEventListener("click", ()=>{
       ctrDown.style.backgroundColor = "black";
     }, 500);
   } else {return}
-  console.log(`flagGameOver: ${flagGameOver}`)
 })
 ctrLeft.addEventListener("click", ()=>{
   if(flagGameOver == false && flagGameStart == true) {
@@ -526,7 +537,6 @@ ctrLeft.addEventListener("click", ()=>{
       ctrLeft.style.backgroundColor = "black";
     }, 500);  
   } else {return}
-  console.log(`flagGameOver: ${flagGameOver}`)
 })
 ctrRight.addEventListener("click", ()=>{
   if(flagGameOver == false && flagGameStart == true) {
@@ -539,7 +549,6 @@ ctrRight.addEventListener("click", ()=>{
       ctrRight.style.backgroundColor = "black";
     }, 500);    
   } else {return}
-  console.log(`flagGameOver: ${flagGameOver}`)
 })
 btnStart.addEventListener("click", ()=>{
   if(flagGameOver == false && flagGameStart == true) {
@@ -551,7 +560,6 @@ btnStart.addEventListener("click", ()=>{
       btnStart.style.backgroundColor = "black";
     }, 500);    
   } else {return}
-  console.log(`flagGameOver: ${flagGameOver}`)
 })// END Joystick  
 
 })// DOMContentLoaded
